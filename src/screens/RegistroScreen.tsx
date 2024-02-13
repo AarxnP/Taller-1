@@ -1,13 +1,23 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { ButtonComponent } from '../components/ButtonComponent';
+import { Menu } from './Menu';
 
-const FormularioRegistro = () => {
+const Stack = createStackNavigator();
+
+export const FormularioRegistro =({ navigation }:any)=> {
   const [nombreUsuario, setNombreUsuario] = useState('');
-  const [correoElectronico, setCorreoElectronico] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [correoElectronico, setCorreoElectronico] = useState('');
+  const onPressMenu = () => {
+    
+    console.log('InicioSesion con:', nombreUsuario,contrasena);
+  };
 
-  const onPressRegistrarse = () => {
-    console.log('Registrarse con:', nombreUsuario, correoElectronico, contrasena);
+  const onPress = () => {
+      
+    navigation.navigate('Menu');
   };
 
   return (
@@ -15,20 +25,16 @@ const FormularioRegistro = () => {
       source={{
         uri: 'https://i.pinimg.com/736x/e6/6b/4e/e66b4eaa600b4614bc695646538325f7.jpg',
       }}
-      style={styles.imagenFondo}
-    >
+      style={styles.imagenFondo}>
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Registro</Text>
-
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Nombre de usuario"
             value={nombreUsuario}
-            onChangeText={(text) => setNombreUsuario(text)}
-          />
+            onChangeText={(text) => setNombreUsuario(text)}/>
         </View>
-
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -38,7 +44,6 @@ const FormularioRegistro = () => {
             onChangeText={(text) => setCorreoElectronico(text)}
           />
         </View>
-
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -48,15 +53,14 @@ const FormularioRegistro = () => {
             onChangeText={(text) => setContrasena(text)}
           />
         </View>
-
-        <TouchableOpacity style={styles.boton} onPress={onPressRegistrarse}>
-          <Text style={styles.textoBoton}>Registrarse</Text>
-        </TouchableOpacity>
+        <View>
+            <ButtonComponent title="Registro" onPress={() => navigation.navigate(Menu)} />
+        </View>
       </View>
+      
     </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   contenedor: {
     flex: 1,
@@ -65,8 +69,11 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontSize: 35,
+    fontWeight: 'bold',
+    color: '#2E4053',
     marginBottom: 15,
-    fontFamily: 'times new roman',
+    fontFamily:'times new roman',
+    textDecorationLine: 'underline',
   },
   inputContainer: {
     width: '80%',
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     padding: 10,
     borderRadius: 10,
-    height: 40,// Color del fondo del cuadro de entrada
+    height: 40,
   },
   boton: {
     backgroundColor: '#328BB2',
@@ -99,5 +106,3 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 });
-
-export default FormularioRegistro;

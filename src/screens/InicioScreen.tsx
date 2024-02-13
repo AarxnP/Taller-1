@@ -1,8 +1,18 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View, ImageBackground } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { ButtonComponent } from '../components/ButtonComponent';
+import { FormularioInicioSesion } from './InicioSesionScreen';
+import { FormularioRegistro } from './RegistroScreen';
 
-export const InicioScreen = () => {
-  return (
+const Stack = createStackNavigator();
+export const InicioScreen =({ navigation }:any)=> {
+
+  const onPress = () => {
+      
+    navigation.navigate('FormularioInicioSesion');
+  };
+    return (
     <View style={styles.container}>
       <ImageBackground
         source={{
@@ -12,12 +22,14 @@ export const InicioScreen = () => {
         <View style={styles.overlay}>
           <Text style={styles.title}>Bienvenido</Text>
           <Text style={styles.title}>MedicinExpress</Text>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('Iniciar sesión')}>
-            <Text style={styles.buttonText}>Iniciar sesión</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('Registrarse')}>
-            <Text style={styles.buttonText}>Registrarse</Text>
-          </TouchableOpacity>
+          <View>
+            <ButtonComponent title="Iniciar Sesion" onPress={() => navigation.navigate(FormularioInicioSesion)} />
+          </View>
+          <View>
+            <ButtonComponent title="Registro" onPress={() => navigation.navigate(FormularioRegistro)} />
+          </View>
+          <View>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -34,7 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     width: '100%',
   },
   title: {
@@ -44,19 +55,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontFamily:'times new roman',
     textDecorationLine: 'underline',
-  },
-  button: {
-    backgroundColor: '#328BB2',
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  buttonText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 0,
-    fontFamily:'times new roman'
   },
   imagenFondo: {
     flex: 1,

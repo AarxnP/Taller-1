@@ -1,13 +1,13 @@
+import 'react-native-gesture-handler';
 import React from 'react'
-
-import FormularioRegistro from './src/screens/RegistroScreen'
-import { InicioScreen } from './src/screens/InicioScreen'
-import FormularioInicioSesion from './src/screens/InicioSesionScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { StackNavigator } from './src/navigator/StackNavigator';
 
 export const App = () => {
   return (
-    //<InicioScreen/>
-    //<FormularioInicioSesion/>
-    <FormularioRegistro/>
+    <NavigationContainer>
+      <StackNavigator/>
+    </NavigationContainer>
   )
 }
+export default App;
