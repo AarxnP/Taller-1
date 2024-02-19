@@ -21,10 +21,10 @@ export const StackNavigator=()=> {
     <Stack.Navigator screenOptions={{ 
         cardStyle:{ 
         }}}> 
-      <Stack.Screen name="InicioScreen" options={{headerShown:false}}component={InicioScreen} /> 
-      <Stack.Screen name="FormularioInicioSesion" options={{headerShown:false}}component={FormularioInicioSesion} /> 
-      <Stack.Screen name="FormularioRegistro" options={{headerShown:false}}component={FormularioRegistro} />
-      <Stack.Screen name="Menu" options={{headerShown:false}}component={Home} />
+      <Stack.Screen name="InicioScreen" options={{headerShown:false}} component={InicioScreen} /> 
+      <Stack.Screen name="FormularioInicioSesion" options={{headerShown:false}} component={FormularioInicioSesion} /> 
+      <Stack.Screen name="FormularioRegistro" options={{headerShown:false}} component={FormularioRegistro} />
+      <Stack.Screen name="Menu" options={{headerShown:false}} component={Home} />
     </Stack.Navigator> 
   ); 
 }

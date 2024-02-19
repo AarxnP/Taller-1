@@ -1,23 +1,30 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ImageBackground } from 'react-native';
 import { ButtonComponent } from '../components/ButtonComponent';
 
+type RootStackParamList = {
+  FormularioRegistro: undefined;
+};
 
-const Stack = createStackNavigator();
+type FormularioRegistroProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'FormularioRegistro'>;
+};
 
-export const FormularioRegistro =({ navigation }:any)=> {
+const Stack = createStackNavigator<RootStackParamList>();
+
+export const FormularioRegistro = ({ navigation }: FormularioRegistroProps) => {
   const [nombreUsuario, setNombreUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [correoElectronico, setCorreoElectronico] = useState('');
+
   const onPressMenu = () => {
-    
-    console.log('InicioSesion con:', nombreUsuario,contrasena);
+    console.log('InicioSesion con:', nombreUsuario, contrasena);
   };
 
-  const onPress = () => {
-      
-    navigation.navigate('Menu');
+  const onPressRegistro = () => {
+    console.log('Datos de Registro:', nombreUsuario, correoElectronico, contrasena);
+    // Puedes agregar aquí lógica adicional para enviar los datos al servidor o realizar otras acciones necesarias
   };
 
   return (
@@ -25,7 +32,8 @@ export const FormularioRegistro =({ navigation }:any)=> {
       source={{
         uri: 'https://i.pinimg.com/736x/e6/6b/4e/e66b4eaa600b4614bc695646538325f7.jpg',
       }}
-      style={styles.imagenFondo}>
+      style={styles.imagenFondo}
+    >
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Registro</Text>
         <View style={styles.inputContainer}>
@@ -33,7 +41,8 @@ export const FormularioRegistro =({ navigation }:any)=> {
             style={styles.input}
             placeholder="Nombre de usuario"
             value={nombreUsuario}
-            onChangeText={(text) => setNombreUsuario(text)}/>
+            onChangeText={(text) => setNombreUsuario(text)}
+          />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
@@ -53,11 +62,13 @@ export const FormularioRegistro =({ navigation }:any)=> {
             onChangeText={(text) => setContrasena(text)}
           />
         </View>
-        {/* <View>
-            <ButtonComponent title="Registro" onPress={() => navigation.navigate(Menu)} />
-        </View> */}
+        <View style={styles.inputContainer}>
+          <ButtonComponent title="Registro" onPress={onPressRegistro} />
+        </View>
+        <View style={styles.inputContainer}>
+          <ButtonComponent title="Atrás" onPress={() => navigation.goBack()} />
+        </View>
       </View>
-      
     </ImageBackground>
   );
 };

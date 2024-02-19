@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Modal, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native'
 import { Product } from '../Home'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 interface Props{
@@ -28,6 +28,7 @@ export const Menu = ({product, isVisible, changeVisible, handlerChangeStockProdu
         handlerChangeStockProduct(product.id, quantity)
         //Cerramos modal
         changeVisible()
+        setQuantity(1)
     }
     
   return (
@@ -73,8 +74,11 @@ export const Menu = ({product, isVisible, changeVisible, handlerChangeStockProdu
                             onPress={handlerAddProduct}>
                             <Text style={styles.buttonCarText}>Agregar Carrito</Text>
                         </TouchableOpacity>
-                    </View>
-                } 
+                    </View> 
+                    
+                   
+                }
+               
             </View>
         </View>
     </Modal>
@@ -144,14 +148,14 @@ const styles=StyleSheet.create({
         color:'#000'
     },
     buttonCar:{
-        backgroundColor:'white',
+        backgroundColor:'skyblue',
         marginTop:15,
         alignItems:'center',
         paddingVertical:10,
         borderRadius:7
     },
     buttonCarText:{
-        color:'#fff',
+        color:'white',
         fontWeight:'bold'
     },
     containerTotalPrice:{
@@ -159,7 +163,7 @@ const styles=StyleSheet.create({
     },
     textStock:{
         fontSize:19,
-        // color:ERROR_COLOR,
+        color:'red',
         textAlign:'center'
     }
 })
