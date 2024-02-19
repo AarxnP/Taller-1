@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { ButtonComponent } from '../components/ButtonComponent';
-import { Menu } from './Menu';
+
 
 const Stack = createStackNavigator();
 
@@ -53,9 +53,9 @@ export const FormularioRegistro =({ navigation }:any)=> {
             onChangeText={(text) => setContrasena(text)}
           />
         </View>
-        <View>
+        {/* <View>
             <ButtonComponent title="Registro" onPress={() => navigation.navigate(Menu)} />
-        </View>
+        </View> */}
       </View>
       
     </ImageBackground>

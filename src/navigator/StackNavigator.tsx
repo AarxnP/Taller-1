@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { InicioScreen } from '../screens/InicioScreen';
 import { FormularioInicioSesion } from '../screens/InicioSesionScreen';
 import { FormularioRegistro } from '../screens/RegistroScreen';
-import { Menu } from '../screens/Menu';
+import { Home } from '../screens/HomeScreen/Home';
 
 
 export type RootStackParamList = {
@@ -24,7 +24,7 @@ export const StackNavigator=()=> {
       <Stack.Screen name="InicioScreen" options={{headerShown:false}}component={InicioScreen} /> 
       <Stack.Screen name="FormularioInicioSesion" options={{headerShown:false}}component={FormularioInicioSesion} /> 
       <Stack.Screen name="FormularioRegistro" options={{headerShown:false}}component={FormularioRegistro} />
-      <Stack.Screen name="Menu" options={{headerShown:false}}component={Menu} />
+      <Stack.Screen name="Menu" options={{headerShown:false}}component={Home} />
     </Stack.Navigator> 
   ); 
 }
